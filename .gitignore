@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Inveon.Web/SD.cs
+/RabbitMQConsumer/SD.cs
+/Inveon.Services.RabbitMQConsumer/SD.cs
+/Inveon.Services.RabbitMQConsumer/SD.cs

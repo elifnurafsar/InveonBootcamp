@@ -60,9 +60,14 @@ namespace Inveon.Service.ShoppingCartAPI.Controllers
                 //logic to add message to process order.
                 // await _messageBus.PublishMessage(checkoutHeader, "checkoutqueue");
 
-                ////rabbitMQ
-
+                //RabbitMQConsumer
                 Payment payment = OdemeIslemi(checkoutHeader, coupon);
+                checkoutHeader.FirstName = "John";
+                checkoutHeader.LastName = "Doe";
+                checkoutHeader.Phone = "+905350000000";
+                checkoutHeader.Email = "email@email.com";
+                checkoutHeader.PickupDateTime = DateTime.Now;
+                checkoutHeader.CardNumber = "5528790000000008";
                 _rabbitMQCartMessageSender.SendMessage(checkoutHeader, "checkoutqueue");
                 await _cartRepository.ClearCart(checkoutHeader.UserId);
             }
