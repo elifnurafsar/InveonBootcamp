@@ -67,6 +67,9 @@ namespace Inveon.Service.ShoppingCartAPI.Controllers
                 checkoutHeader.Phone = "+905350000000";
                 checkoutHeader.Email = "email@email.com";
                 checkoutHeader.PickupDateTime = DateTime.Now;
+                checkoutHeader.CVV = "123";
+                checkoutHeader.ExpiryMonth = "12";
+                checkoutHeader.ExpiryYear = "2030";
                 checkoutHeader.CardNumber = "5528790000000008";
                 _rabbitMQCartMessageSender.SendMessage(checkoutHeader, "checkoutqueue");
                 await _cartRepository.ClearCart(checkoutHeader.UserId);

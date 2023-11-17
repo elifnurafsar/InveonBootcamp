@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inveon.Services.CouponAPI",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inveon.Services.ShoppingCartAPI", "Inveon.Services.ShoppingCartAPI\Inveon.Services.ShoppingCartAPI.csproj", "{1831DF74-0C71-482B-B3D7-3EDD4899C273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inveon.Services.RabbitMQConsumer", "Inveon.Services.RabbitMQConsumer\Inveon.Services.RabbitMQConsumer.csproj", "{35D132B4-3399-40D7-BB41-29F8720423DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inveon.Services.RabbitMQConsumer", "Inveon.Services.RabbitMQConsumer\Inveon.Services.RabbitMQConsumer.csproj", "{35D132B4-3399-40D7-BB41-29F8720423DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inveon.Services.OrderAPI", "Inveon.Services.OrderAPI\Inveon.Services.OrderAPI\Inveon.Services.OrderAPI.csproj", "{F3DD5FFA-D135-41D1-8CAF-8CE421937D93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{35D132B4-3399-40D7-BB41-29F8720423DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35D132B4-3399-40D7-BB41-29F8720423DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35D132B4-3399-40D7-BB41-29F8720423DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3DD5FFA-D135-41D1-8CAF-8CE421937D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3DD5FFA-D135-41D1-8CAF-8CE421937D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3DD5FFA-D135-41D1-8CAF-8CE421937D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3DD5FFA-D135-41D1-8CAF-8CE421937D93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{4994794D-9D8A-4A8C-9D0E-178F9A91F09C} = {B87F62AF-5B78-4563-B53F-D1C2FC7A1AE2}
 		{1831DF74-0C71-482B-B3D7-3EDD4899C273} = {B87F62AF-5B78-4563-B53F-D1C2FC7A1AE2}
 		{35D132B4-3399-40D7-BB41-29F8720423DA} = {B87F62AF-5B78-4563-B53F-D1C2FC7A1AE2}
+		{F3DD5FFA-D135-41D1-8CAF-8CE421937D93} = {B87F62AF-5B78-4563-B53F-D1C2FC7A1AE2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {828E0C15-C3B6-46FA-87F4-61B8E7714250}

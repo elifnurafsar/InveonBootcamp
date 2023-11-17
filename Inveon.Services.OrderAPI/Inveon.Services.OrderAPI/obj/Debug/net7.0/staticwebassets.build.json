@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "+WH0CdSaJZoVmQF6FIUxnPzCF7RQTDS5Z7E/C14xQog=",
+  "Source": "Inveon.Services.OrderAPI",
+  "BasePath": "_content/Inveon.Services.OrderAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
