@@ -1,6 +1,11 @@
 # InveonBootcamp
 Restaurant delivery web app with microservice architecture
 
+> [!NOTE]  
+> ## Streamlined Checkout for Time Efficiency ⏰
+> To expedite the checkout experience and save our time, I've implemented a streamlined process. The web app does not request personal information at checkout stage. Instead, dummy data is utilized on the backend to efficiently populate customer information.
+
+
 ## IYZICO Panel Transaction Data
 Implemented the integration of the iyzico admin panel to handle customer purchasing data. <br/>
 The primary focus is on providing accurate pricing information, considering the application's coupon system and applying discounts effectively.
