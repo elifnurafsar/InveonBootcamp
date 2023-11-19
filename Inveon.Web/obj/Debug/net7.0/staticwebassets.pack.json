@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\Uploads\\sweet_pie.jpg"
     },
     {
+      "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\t-shirt.png",
+      "PackagePath": "staticwebassets\\Uploads\\t-shirt.png"
+    },
+    {
       "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\tatli1.jpg",
       "PackagePath": "staticwebassets\\Uploads\\tatli1.jpg"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\tatli3.jpg",
       "PackagePath": "staticwebassets\\Uploads\\tatli3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\woman4.png",
+      "PackagePath": "staticwebassets\\Uploads\\woman4.png"
     },
     {
       "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\css\\site.css",

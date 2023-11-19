@@ -18,6 +18,7 @@ namespace Inveon.Services.ProductAPI.Controllers
             _productRepository = productRepository;
             this._response = new ResponseDto();
         }
+
         [HttpGet]
         public async Task<object> Get()
         {
@@ -43,6 +44,23 @@ namespace Inveon.Services.ProductAPI.Controllers
             {
                 ProductDto productDto = await _productRepository.GetProductById(id);
                 _response.Result = productDto;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages
+                     = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
+
+        [HttpGet("byCategory/{category}")]
+        public async Task<object> Get(string category)
+        {
+            try
+            {
+                IEnumerable<ProductDto> productDtos = await _productRepository.GetProductsByCategory(category);
+                _response.Result = productDtos;
             }
             catch (Exception ex)
             {

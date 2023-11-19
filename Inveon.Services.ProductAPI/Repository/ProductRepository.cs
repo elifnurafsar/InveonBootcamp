@@ -64,6 +64,16 @@ namespace Inveon.Services.ProductAPI.Repository
             return _mapper.Map<ProductDto>(product);
         }
 
+        public async Task<IEnumerable<ProductDto>> GetProductsByCategory(string category)
+        {
+            //linq select * from Product where Id=productId
+            //{Id:1,Name : Product1}
+            List<Product> productList = _db.Products
+                          .Where(p => EF.Functions.Like(p.CategoryName.ToLower(), "%" + category + "%"))
+                          .ToList();
+            return _mapper.Map<List<ProductDto>>(productList);
+        }
+
         public async Task<IEnumerable<ProductDto>> GetProducts()
         {
             List<Product> productList = await _db.Products.ToListAsync();
