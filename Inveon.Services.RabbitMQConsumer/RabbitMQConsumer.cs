@@ -46,8 +46,14 @@ namespace Inveon.Services.RabbitMQConsumer
                 MailContentDTO content = JsonConvert.DeserializeObject<MailContentDTO>(json);
                 _ = SendEmailAsync(content);
             };
-
-            channel.BasicConsume("checkoutqueue", false, consumer);
+            try
+            {
+                channel.BasicConsume("checkoutqueue", false, consumer);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"An error occurred: {e.Message}");
+            }
 
             while (!stoppingToken.IsCancellationRequested)
             {

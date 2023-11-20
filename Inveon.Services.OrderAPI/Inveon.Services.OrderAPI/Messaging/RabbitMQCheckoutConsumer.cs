@@ -27,9 +27,16 @@ namespace Inveon.Services.OrderAPI.Messaging
                 Password = "guest"
             };
 
-            _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
-            _channel.QueueDeclare(queue: "checkoutqueue", false, false, false, arguments: null);
+            try
+            {
+                _connection = factory.CreateConnection();
+                _channel = _connection.CreateModel();
+                _channel.QueueDeclare(queue: "checkoutqueue", false, false, false, arguments: null);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -44,7 +51,9 @@ namespace Inveon.Services.OrderAPI.Messaging
 
                 _channel.BasicAck(ea.DeliveryTag, false);
             };
-            _channel.BasicConsume("checkoutqueue", false, consumer);
+            try { _channel.BasicConsume("checkoutqueue", false, consumer); }
+            catch(Exception ex) { Console.WriteLine(ex.ToString()); }
+            
 
             return Task.CompletedTask;
         }

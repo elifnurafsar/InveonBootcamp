@@ -27,11 +27,18 @@ namespace Inveon.Services.OrderAPI.Messaging
                 Password = "guest"
             };
 
-            _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
-            _channel.ExchangeDeclare(ExchangeName, ExchangeType.Direct);
-            _channel.QueueDeclare(PaymentOrderUpdateQueueName, false, false, false, null);
-            _channel.QueueBind(PaymentOrderUpdateQueueName, ExchangeName, "PaymentOrder");
+            try
+            {
+                _connection = factory.CreateConnection();
+                _channel = _connection.CreateModel();
+                _channel.ExchangeDeclare(ExchangeName, ExchangeType.Direct);
+                _channel.QueueDeclare(PaymentOrderUpdateQueueName, false, false, false, null);
+                _channel.QueueBind(PaymentOrderUpdateQueueName, ExchangeName, "PaymentOrder");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
         }
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -46,7 +53,14 @@ namespace Inveon.Services.OrderAPI.Messaging
 
                 _channel.BasicAck(ea.DeliveryTag, false);
             };
-            _channel.BasicConsume(PaymentOrderUpdateQueueName, false, consumer);
+            try
+            {
+                _channel.BasicConsume(PaymentOrderUpdateQueueName, false, consumer);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
 
             return Task.CompletedTask;
         }

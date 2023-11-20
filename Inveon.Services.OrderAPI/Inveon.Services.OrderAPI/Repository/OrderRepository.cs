@@ -1,4 +1,6 @@
 ﻿using Inveon.Services.OrderAPI.DbContexts;
+using Inveon.Services.OrderAPI.Dto;
+using Inveon.Services.OrderAPI.Mapper;
 using Inveon.Services.OrderAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +25,18 @@ namespace Inveon.Services.OrderAPI.Repository
             _db.OrderHeaders.Add(orderHeader);
             await _db.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<OrderHeaderDto>> GetOrdersWithDetails(string userId)
+        {
+            await using var _db = new ApplicationDbContext(_dbContext);
+            var orders = _db.OrderHeaders
+               .Include(o => o.OrderDetails)
+               .Where(o => o.UserId == userId)
+               .ToList();
+
+            var orderDtos = orders.Select(OrderMapper.MapToDto).ToList();
+            return orderDtos;
         }
 
         public async Task UpdateOrderPaymentStatus(int orderHeaderId, bool paid)
