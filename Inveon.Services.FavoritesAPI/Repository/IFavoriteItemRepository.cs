@@ -8,5 +8,6 @@ namespace Inveon.Services.FavoritesAPI.Repository
         Task<IEnumerable<FavoriteItemResponseDto>> GetFavoritesByUserId(string userId);
         Task<FavoriteItemDto> AddToFavorites(FavoriteItemDto favoriteItemDto);
         Task<bool> RemoveFromFavorites(FavoriteItemDto favoriteItemDto);
+        Task<bool> RemoveAllFavorites(string userId);
     }
 }

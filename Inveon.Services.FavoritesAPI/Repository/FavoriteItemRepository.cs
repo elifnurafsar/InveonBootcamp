@@ -94,5 +94,20 @@ namespace Inveon.Services.FavoritesAPI.Repository
                 return false;
             }
         }
+
+        public async Task<bool> RemoveAllFavorites(string userId)
+        {
+            try
+            {
+                var favoritesToRemove = _db.FavoriteItems.Where(f => f.UserId == userId);
+                _db.FavoriteItems.RemoveRange(favoritesToRemove);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
