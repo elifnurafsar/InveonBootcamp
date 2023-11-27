@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AOJLP9fFFozKb1SZDeL6fQ5qDYZi8DgJsNOGfINjbZU=",
+  "Source": "Inveon.Services.FavoritesAPI",
+  "BasePath": "_content/Inveon.Services.FavoritesAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
