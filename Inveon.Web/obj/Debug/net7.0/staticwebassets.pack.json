@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Inveon.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\err4.PNG",
+      "PackagePath": "staticwebassets\\Uploads\\err4.PNG"
+    },
+    {
       "Id": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\hqdefault.jpg",
       "PackagePath": "staticwebassets\\Uploads\\hqdefault.jpg"
     },

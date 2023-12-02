@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hNYQHCtmOD2PXGiTWt130gzziTmumRHipHvEIzcxsaQ=",
+  "Hash": "lrp0TDdV64iF+ULso7LeKe/K+OnhaJv/BE20/eozPd4=",
   "Source": "Inveon.Web",
   "BasePath": "_content/Inveon.Web",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\err4.PNG",
+      "SourceId": "Inveon.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\",
+      "BasePath": "_content/Inveon.Web",
+      "RelativePath": "Uploads/err4.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\err4.PNG"
     },
     {
       "Identity": "C:\\Users\\ENA\\Desktop\\Inveon\\microservices\\Inveon.Web\\wwwroot\\Uploads\\hqdefault.jpg",

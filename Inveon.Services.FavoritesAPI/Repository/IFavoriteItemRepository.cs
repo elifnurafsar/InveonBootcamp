@@ -6,7 +6,7 @@ namespace Inveon.Services.FavoritesAPI.Repository
     public interface IFavoriteItemRepository
     {
         Task<IEnumerable<FavoriteItemResponseDto>> GetFavoritesByUserId(string userId);
-        Task<FavoriteItemDto> AddToFavorites(FavoriteItemDto favoriteItemDto);
+        Task<(bool IsAdded, FavoriteItemDto Item)> AddToFavorites(FavoriteItemDto favoriteItemDto);
         Task<bool> RemoveFromFavorites(FavoriteItemDto favoriteItemDto);
         Task<bool> RemoveAllFavorites(string userId);
     }

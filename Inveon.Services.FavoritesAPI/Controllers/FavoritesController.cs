@@ -52,13 +52,22 @@ namespace Inveon.Services.FavoritesAPI.Controllers
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public async Task<object> Post([FromBody] FavoriteItemDto favoriteItemDto)
         {
             try
             {
-                FavoriteItemDto model = await favoriteItemRepository.AddToFavorites(favoriteItemDto);
-                _response.Result = model;
+                var (isAdded, model) = await favoriteItemRepository.AddToFavorites(favoriteItemDto);
+
+                if (isAdded)
+                {
+                    _response.Result = model;
+                }
+                else
+                {
+                    _response.IsSuccess = false;
+                    _response.ErrorMessages = new List<string> { "Item already exists in favorites." };
+                }
             }
             catch (Exception ex)
             {
@@ -69,7 +78,7 @@ namespace Inveon.Services.FavoritesAPI.Controllers
         }
 
         [HttpDelete]
-        //[Authorize]
+        [Authorize]
         public async Task<object> Delete([FromBody] FavoriteItemDto favoriteItemDto)
         {
             try

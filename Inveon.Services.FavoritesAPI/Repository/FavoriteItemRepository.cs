@@ -22,19 +22,36 @@ namespace Inveon.Services.FavoritesAPI.Repository
             productRepository = _productRepository;
         }
 
-        public async Task<FavoriteItemDto> AddToFavorites(FavoriteItemDto favoriteItemDto)
+        public async Task<(bool IsAdded, FavoriteItemDto Item)> AddToFavorites(FavoriteItemDto favoriteItemDto)
         {
-            // Map FavoriteItemDto to FavoriteItem entity
-            var favoriteItem = _mapper.Map<FavoriteItem>(favoriteItemDto);
+            try { 
+                // Check if the item already exists in the user's favorites
+                var existingFavoriteItem = await _db.FavoriteItems
+                    .FirstOrDefaultAsync(fi => fi.ProductId == favoriteItemDto.ProductId && fi.UserId == favoriteItemDto.UserId);
 
-            // Add to the database
-            _db.FavoriteItems.Add(favoriteItem);
-            await _db.SaveChangesAsync();
+                if (existingFavoriteItem != null)
+                {
+                    // Item already exists, return existing item details
+                    var existingItemDto = _mapper.Map<FavoriteItemDto>(existingFavoriteItem);
+                    return (false, existingItemDto);
+                }
 
-            // Map the added entity back to FavoriteItemDto
-            var addedFavoriteItemDto = _mapper.Map<FavoriteItemDto>(favoriteItem);
+                // Map FavoriteItemDto to FavoriteItem entity
+                var favoriteItem = _mapper.Map<FavoriteItem>(favoriteItemDto);
 
-            return addedFavoriteItemDto;
+                // Add to the database
+                _db.FavoriteItems.Add(favoriteItem);
+                await _db.SaveChangesAsync();
+
+                // Map the added entity back to FavoriteItemDto
+                var addedFavoriteItemDto = _mapper.Map<FavoriteItemDto>(favoriteItem);
+
+                return (true, addedFavoriteItemDto);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<FavoriteItemResponseDto>> GetFavoritesByUserId(string userId)
@@ -77,7 +94,7 @@ namespace Inveon.Services.FavoritesAPI.Repository
             try
             {
                 var favoriteItem = await _db.FavoriteItems
-                    .FirstOrDefaultAsync(f => f.FavoriteItemID == favoriteItemDto.ProductId && f.UserId == favoriteItemDto.UserId);
+                    .FirstOrDefaultAsync(f => f.ProductId == favoriteItemDto.ProductId && f.UserId == favoriteItemDto.UserId);
 
                 if (favoriteItem != null)
                 {

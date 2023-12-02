@@ -33,21 +33,22 @@ namespace Inveon.Service.ShoppingCartAPI.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<object> Checkout([FromBody] CheckoutHeaderDto checkoutHeader)
+        public async Task<object> Checkout([FromBody] CheckoutHeaderDto checkoutHeaderDto)
         {
             try
             {
-                CartDto cartDto = await _cartRepository.GetCartByUserId(checkoutHeader.UserId);
+                
+                CartDto cartDto = await _cartRepository.GetCartByUserId(checkoutHeaderDto.UserId);
                 if (cartDto == null)
                 {
                     return BadRequest();
                 }
                 CouponDto coupon = new CouponDto();
                 coupon.DiscountAmount = 0;
-                if (!string.IsNullOrEmpty(checkoutHeader.CouponCode))
+                if (!string.IsNullOrEmpty(checkoutHeaderDto.CouponCode))
                 {
-                    coupon = await _couponRepository.GetCoupon(checkoutHeader.CouponCode);
-                    if (checkoutHeader.DiscountTotal != coupon.DiscountAmount)
+                    coupon = await _couponRepository.GetCoupon(checkoutHeaderDto.CouponCode);
+                    if (checkoutHeaderDto.DiscountTotal != coupon.DiscountAmount)
                     {
                         _response.IsSuccess = false;
                         _response.ErrorMessages = new List<string>() { "Coupon Price has changed, please confirm" };
@@ -56,23 +57,23 @@ namespace Inveon.Service.ShoppingCartAPI.Controllers
                     }
                 }
 
-                checkoutHeader.CartDetails = cartDto.CartDetails;
+                checkoutHeaderDto.CartDetails = cartDto.CartDetails;
                 //logic to add message to process order.
                 // await _messageBus.PublishMessage(checkoutHeader, "checkoutqueue");
 
                 //RabbitMQConsumer
-                Payment payment = OdemeIslemi(checkoutHeader, coupon);
-                checkoutHeader.FirstName = "John";
-                checkoutHeader.LastName = "Doe";
-                checkoutHeader.Phone = "+905350000000";
-                checkoutHeader.Email = "email@email.com";
-                checkoutHeader.PickupDateTime = DateTime.Now;
-                checkoutHeader.CVV = "123";
-                checkoutHeader.ExpiryMonth = "12";
-                checkoutHeader.ExpiryYear = "2030";
-                checkoutHeader.CardNumber = "5528790000000008";
-                _rabbitMQCartMessageSender.SendMessage(checkoutHeader, "checkoutqueue");
-                await _cartRepository.ClearCart(checkoutHeader.UserId);
+                //Payment payment = OdemeIslemi(checkoutHeaderDto, coupon);
+                checkoutHeaderDto.FirstName = "John";
+                checkoutHeaderDto.LastName = "Doe";
+                checkoutHeaderDto.Phone = "+905350000000";
+                checkoutHeaderDto.Email = "email@email.com";
+                checkoutHeaderDto.PickupDateTime = DateTime.Now;
+                checkoutHeaderDto.CVV = "123";
+                checkoutHeaderDto.ExpiryMonth = "12";
+                checkoutHeaderDto.ExpiryYear = "2030";
+                checkoutHeaderDto.CardNumber = "5528790000000008";
+                _rabbitMQCartMessageSender.SendMessage(checkoutHeaderDto, "checkoutqueue");
+                await _cartRepository.ClearCart(checkoutHeaderDto.UserId);
             }
             catch (Exception ex)
             {

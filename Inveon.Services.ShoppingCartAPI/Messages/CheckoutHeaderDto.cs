@@ -8,7 +8,14 @@ namespace Inveon.Services.ShoppingCartAPI.Messages
         public int CartHeaderId { get; set; }
         public string UserId { get; set; }
         public string CouponCode { get; set; }
-        public double OrderTotal { get; set; }
+        //public double OrderTotal { get; set; }
+        public double OrderTotal
+        {
+            get
+            {
+                return CartDetails?.Sum(cartDetail => cartDetail.Product?.Price * cartDetail.Count) ?? 0;
+            }
+        }
         public double DiscountTotal { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
