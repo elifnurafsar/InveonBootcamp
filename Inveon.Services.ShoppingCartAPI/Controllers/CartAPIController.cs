@@ -99,6 +99,22 @@ namespace Inveon.Services.ShoppingCartAPI.Controllers
             return _response;
         }
 
+        [HttpPost("RemoveAllCart")]
+        public async Task<object> RemoveAllCart([FromBody] int cartId)
+        {
+            try
+            {
+                bool isSuccess = await _cartRepository.RemoveCart(cartId);
+                _response.Result = isSuccess;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
+
         [HttpPost("ApplyCoupon")]
         public async Task<object> ApplyCoupon([FromBody] CartDto cartDto)
         {

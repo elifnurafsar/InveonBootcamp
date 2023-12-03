@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Vzsh5ghXJ+vs33GIGqKsZ7COagewO2M+LUdXi/RO5oU=",
+  "Source": "Inveon.Services.SignalRAPI",
+  "BasePath": "_content/Inveon.Services.SignalRAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

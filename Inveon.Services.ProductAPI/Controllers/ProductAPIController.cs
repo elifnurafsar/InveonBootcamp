@@ -72,7 +72,7 @@ namespace Inveon.Services.ProductAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("addProduct")]
         [Authorize]
         public async Task<object> Post([FromBody] ProductDto productDto)
         {

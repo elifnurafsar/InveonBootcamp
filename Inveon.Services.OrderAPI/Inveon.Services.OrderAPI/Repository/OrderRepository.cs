@@ -49,5 +49,17 @@ namespace Inveon.Services.OrderAPI.Repository
                 await _db.SaveChangesAsync();
             }
         }
+
+        public async Task<IEnumerable<OrderHeaderDto>> GetAllOrdersWithDetails()
+        {
+            await using var _db = new ApplicationDbContext(_dbContext);
+            var orders = _db.OrderHeaders
+               .Include(o => o.OrderDetails)
+               .ToList();
+
+            var orderDtos = orders.Select(OrderMapper.MapToDto).ToList();
+            return orderDtos;
+        }
+
     }
 }

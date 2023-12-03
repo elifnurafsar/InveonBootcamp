@@ -7,6 +7,7 @@ namespace Inveon.Services.OrderAPI.Repository
     {
         Task<bool> AddOrder(OrderHeader orderHeader);
         Task<IEnumerable<OrderHeaderDto>> GetOrdersWithDetails(string userId);
+        Task<IEnumerable<OrderHeaderDto>> GetAllOrdersWithDetails();
         Task UpdateOrderPaymentStatus(int orderHeaderId, bool paid);
     }
 }

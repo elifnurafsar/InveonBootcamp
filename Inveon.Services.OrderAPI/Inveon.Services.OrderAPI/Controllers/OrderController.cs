@@ -42,5 +42,22 @@ namespace Inveon.Services.OrderAPI.Controllers
             return _response;
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<object> GetAllOrdersWithDetails()
+        {
+            try
+            {
+                IEnumerable<OrderHeaderDto> orders = await _orderRepository.GetAllOrdersWithDetails();
+                _response.Result = orders;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.ErrorMessages
+                     = new List<string>() { ex.ToString() };
+            }
+            return _response;
+        }
     }
 }
