@@ -2,6 +2,9 @@
 Restaurant delivery web app with microservice architecture
 
 > [!NOTE]  
+> Final video: https://youtu.be/zlxpQB0nb5s
+
+> [!NOTE]  
 > ## Streamlined Checkout for Time Efficiency ⏰
 > To expedite the checkout experience and save our time, I've implemented a streamlined process. The web app does not request personal information at checkout stage. Instead, dummy data is utilized on the backend to efficiently populate customer information.
 
@@ -44,7 +47,7 @@ Changes Made:
   <img src="https://github.com/elifnurafsar/InveonBootcamp/assets/60623941/a1ca7feb-d724-40bd-8ef8-3b0bd7acb816" width="800" alt="Screenshot of the payment page of our last purchase."/>
 </p>
 
+### Iyzico Problem Solutiom
 
-
-
+![err](https://github.com/elifnurafsar/InveonBootcamp/assets/60623941/9220b054-47ef-4424-8931-faae0fbd6f3f)
 
