@@ -59,10 +59,10 @@ namespace Inveon.Service.ShoppingCartAPI.Controllers
 
                 checkoutHeaderDto.CartDetails = cartDto.CartDetails;
                 //logic to add message to process order.
-                // await _messageBus.PublishMessage(checkoutHeader, "checkoutqueue");
+                //await _messageBus.PublishMessage(checkoutHeader, "checkoutqueue");
 
                 //RabbitMQConsumer
-                //Payment payment = OdemeIslemi(checkoutHeaderDto, coupon);
+                Payment payment = OdemeIslemi(checkoutHeaderDto, coupon);
                 checkoutHeaderDto.FirstName = "John";
                 checkoutHeaderDto.LastName = "Doe";
                 checkoutHeaderDto.Phone = "+905350000000";
